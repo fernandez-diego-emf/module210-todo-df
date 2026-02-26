@@ -1,4 +1,5 @@
 /* Général */
+
 body {
     font-family: "Bungee", sans-serif;
     font-weight: 400;
@@ -9,6 +10,7 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -99,7 +101,7 @@ button:hover {
     border-radius: 8px;
     margin-bottom: 10px;
     background: #f9f9f9;
-    transition: cubic-bezier(.5,1,.75,1) .2s;
+    transition: cubic-bezier(.5, 1, .75, 1) .2s;
 }
 
 #todo-list li:hover {
@@ -119,7 +121,7 @@ button:hover {
     cursor: pointer;
     font-size: 1rem;
     transition: color 0.3s ease;
-    background: -webkit-linear-gradient(125deg,rgba(83, 54, 6, 1) 0%, rgba(197, 131, 71, 1) 45%, rgba(244, 203, 190, 1) 100%);
+    background: -webkit-linear-gradient(125deg, rgba(83, 54, 6, 1) 0%, rgba(197, 131, 71, 1) 45%, rgba(244, 203, 190, 1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
