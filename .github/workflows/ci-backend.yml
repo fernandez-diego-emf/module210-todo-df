@@ -1,0 +1,34 @@
+name: Build and save my Docker image to a regitry
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "src/backend/**"       # déclenchement seulement si le backend change
+      - ".github/workflows/ci-backend.yml"
+
+env:
+  REG_NAME: "${{secrets.REGISTRY_NAME}}" # Nom du registy
+  IMAGE_NAME: "backend-app" # Nom de votre image
+
+jobs:
+
+  build-and-deploy:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log in to registry
+        run: |
+          echo "${{ secrets.REGISTRY_PASSWORD }}" | docker login ${{ env.REG_NAME }} -u "${{ secrets.REGISTRY_USER }}" --password-stdin
+
+      - name: Build Docker image
+        run: |
+          docker build -t ${{ env.REG_NAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }} ./backend
+
+      - name: Push Docker image
+        run: |
+          docker push ${{ env.REG_NAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
