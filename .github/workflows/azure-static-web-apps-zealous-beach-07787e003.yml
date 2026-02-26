@@ -48,6 +48,9 @@ jobs:
         with:
           # List of URL(s) to analyze
           urls: https://zealous-beach-07787e003.2.azurestaticapps.net/
+          uploadArtifacts: true # save results as an action artifacts
+          temporaryPublicStorage: true # upload lighthouse report to the temporary storage
+          configPath: './.lighthouserc.json'
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
@@ -60,5 +63,6 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_ZEALOUS_BEACH_07787E003 }}
           action: "close"
+
 
 
