@@ -19,6 +19,15 @@ jobs:
         with:
           submodules: true
           lfs: false
+      - name: Vérifier la présence de index.html
+        run: |
+          FILE="src/frontend/index.html"
+          if [ ! -f "$FILE" ]; then
+            echo "❌ ERREUR : Le fichier requis '$FILE' est manquant."
+            exit 1
+          else
+            echo "✅ Fichier trouvé : $FILE"
+          fi
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
@@ -44,3 +53,4 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_ZEALOUS_BEACH_07787E003 }}
           action: "close"
+
