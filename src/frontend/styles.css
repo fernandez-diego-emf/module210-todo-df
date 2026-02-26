@@ -1,4 +1,9 @@
 /* Général */
+@font-face {
+    font-family: Bungee; /* set name */
+    src: url('./fonts/Bungee/Bungee-Regular.ttf');
+}
+
 
 body {
     font-family: "Bungee", sans-serif;
